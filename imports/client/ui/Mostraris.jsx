@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 //import { LinkContainer } from 'react-router-bootstrap';
-import Masonry from 'react-masonry-component';
+//import Masonry from 'react-masonry-component';
+import Masonry from 'react-masonry-infinite';
 import * as conf from './config.jsx';
 
 import { Link } from 'react-router-dom';
@@ -9,7 +10,19 @@ import { Link } from 'react-router-dom';
 export class MostrariSubcategoriaPRODUCTES extends Component {
     constructor(props) {
         super(props);
+        this.state = {
+            hasMore: true,
+            //elements: this.generateElements(),
+        };
     }
+
+     // generateElements = () => [...Array(10).keys()].map(() => ({
+     //    key: shortid.generate(),
+     //  }));
+
+      // loadMore = () => setTimeout(() => this.setState(state => ({
+      //   elements: state.elements.concat(this.generateElements()),
+      // })), 2500);
 
     render() {
         if (this.props.data.loading) {
@@ -241,7 +254,18 @@ export class MostrariSubcategoriaPRODUCTES extends Component {
 
         return (
             <Masonry
-                elementType={'ul'}
+                element={'ul'}
+                className="masonry"
+                hasMore={this.state.hasMore}
+                loader={<div className='thumbnail article text-center'>Cargando más... <i className='fa fa-cog fa-spin'></i></div>
+                  // <div className="sk-folding-cube">
+                  //   <div className="sk-cube1 sk-cube" />
+                  //   <div className="sk-cube2 sk-cube" />
+                  //   <div className="sk-cube4 sk-cube" />
+                  //   <div className="sk-cube3 sk-cube" />
+                  // </div>
+                }
+                loadMore={this.loadMore}
             >
             {
                 (() => {
