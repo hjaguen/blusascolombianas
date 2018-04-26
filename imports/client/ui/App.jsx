@@ -62,6 +62,8 @@ let variables = {
     productId: ""
 };
 
+const cartItems = {};
+
 const NavbarAdaptatAmbSubcategories = graphql(Qs.SubcategoriesQuery, {
     options: {
         variables

@@ -11,7 +11,7 @@ export default class MainContentProducte extends Component {
             selectedImgSrc: "",
             selectedProduct: {},
             estado: "ADD TO CART", 
-            cart: [],
+            cart:this.props.cartItems,
             imagen:"",
             cantidad:"",
             cartBounce: false,
@@ -121,23 +121,11 @@ export default class MainContentProducte extends Component {
         });
     }
 
-    // RemoveProduct(id, e){
-    //     let cart = this.state.cart;
-    //     let index = cart.findIndex((x => x.id == id));
-    //     cart.splice(index, 1);
-    //     this.setState({
-    //         cart: cart
-    //     })
-    //     this.sumTotalItems(this.state.cart);
-    //     this.sumTotalAmount(this.state.cart);
-    //     e.preventDefault();
-    // }
 
     render() {
 
-        //console.dir(this.props.data);
+        console.dir(this.props.cartItems);
 
-        const {cartItems} = this.state.cart;
         let imagen = this.state.imagen;
         let nombre = this.state.nombre; //this.refs.nombre;   //Descripcion
         let ref = this.state.ref;       //Referencia
@@ -145,24 +133,7 @@ export default class MainContentProducte extends Component {
         let color = this.state.color;   // num_color, label_color
         let talla = this.state.talla;   // label_talla
         let cantidad = this.state.cantidad;  //quantity
-        // let cartItems;
-        // cartItems = this.state.cart.map(product =>{
-        //     return(
-        //         <li className="cart-item" key={product.nombre}>
-        //             <img src={product.imagen} />
-        //             <div>
-        //                 <p>{product.nombre}</p>
-        //                 <p>{product.talla}</p>
-        //                 <p>{product.color}</p>
-        //             </div>
-        //             <div className="product-total">
-        //                 <p>{product.cantidad} {product.cantidad > 1 ?"Nos." : "No." } </p>
-        //             </div>
-        //             <a href="#" onClick={this.removeProduct.bind(this, product.ref)}>×</a>
-        //         </li>
-        //     )
-        // });
-        console.dir(this.props.cartItems);
+        
         return (
             [
                 <div
