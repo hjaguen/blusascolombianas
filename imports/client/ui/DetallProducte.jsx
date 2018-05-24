@@ -8,6 +8,7 @@ export default class MainContentProducte extends Component {
         super(props, context);
 
         this.state = {
+            selectedProduct: {},
             selectedImgSrc: "",
             selectedProduct: {},
             estado: "ADD TO CART", 
@@ -41,59 +42,6 @@ export default class MainContentProducte extends Component {
     //     });
     // }
 
-    handleAddToCart(selectedProducts){
-        let cartItem = this.state.cart;
-        let productID = selectedProducts.ref;
-        let productQty = selectedProducts.cantidad;
-        if(this.checkProduct(productID)){
-            console.log('hi');
-            let index = cartItem.findIndex((x => x.id == productID));
-            cartItem[index].cantidad = Number(cartItem[index].cantidad) + Number(productQty);
-            this.setState({
-                cart: cartItem
-            })
-        } else {
-            //console.log('this');
-            cartItem.push(selectedProducts);
-        }
-        this.setState({
-            cart : cartItem,
-            cartBounce: true,
-        });
-        setTimeout(function(){
-            this.setState({
-                cartBounce:false,
-                cantidad: 1
-            });
-            //console.log(this.state.cantidad);
-            //console.log(this.state.cart);
-    }.bind(this),1000);  
-        this.sumTotalItems(this.state.cart);
-    }
-    handleRemoveProduct(id, e){
-        let cart = this.state.cart;
-        let index = cart.findIndex((x => x.id == id));
-        cart.splice(index, 1);
-        this.setState({
-            cart: cart
-        })
-        this.sumTotalItems(this.state.cart);
-        e.preventDefault();
-    }
-    checkProduct(productID){
-        let cart = this.state.cart;
-        return cart.some(function(item) {
-            return item.id === productID;
-        }); 
-    }
-    sumTotalItems(){
-        let total = 0;
-        let cart = this.state.cart;
-        total = cart.length;
-        this.setState({
-            totalItems: total
-        })
-    }
 
     addToCart(imagen, nombre, ref, marca, color, talla, cantidad){
         this.setState({
@@ -107,7 +55,7 @@ export default class MainContentProducte extends Component {
                 cantidad: cantidad  //quantity
             }
         }, function(){
-            this.handleAddToCart(this.state.selectedProduct);
+            this.props.addToCart(this.state.selectedProduct);
         })
         this.setState({
             estado: "✔ ADDED"
@@ -124,7 +72,7 @@ export default class MainContentProducte extends Component {
 
     render() {
 
-        console.dir(this.props.cartItems);
+        //console.dir(this.props.cartItems);
 
         let imagen = this.state.imagen;
         let nombre = this.state.nombre; //this.refs.nombre;   //Descripcion

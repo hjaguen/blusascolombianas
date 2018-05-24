@@ -283,5 +283,10 @@ export const
       className: 'mdl-mega-footer'
     })`
       background-color: black;
+    `,
+
+    imagenPedido = styled.img`
+      margin-top:0.5em;
+      width:5em;
     `
 ;

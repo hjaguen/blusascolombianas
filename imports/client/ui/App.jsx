@@ -75,6 +75,10 @@ export default class App extends Component {
         super(props);
 
         this.state = {
+            products: [],
+            cart: [],
+            totalItems: 0,
+            quantity : 1,
             variables,
             filtreMarca: null,
             filtreTalla: null,
@@ -87,6 +91,12 @@ export default class App extends Component {
         this.marcaIdAVariables = this.marcaIdAVariables.bind(this);
         this.tallaIdAVariables = this.tallaIdAVariables.bind(this);
         this.colorIdAVariables = this.colorIdAVariables.bind(this);
+
+        this.handleAddToCart = this.handleAddToCart.bind(this);
+        this.sumTotalItems = this.sumTotalItems.bind(this);
+        this.checkProduct = this.checkProduct.bind(this);
+        this.updateQuantity = this.updateQuantity.bind(this);
+        this.handleRemoveProduct = this.handleRemoveProduct.bind(this);
     }
 
     // marcaTallaUpdate(m, t) {
@@ -173,58 +183,68 @@ export default class App extends Component {
         });
     }
 
-    // handleAddToCart(selectedProducts){
-    //     let cartItem = this.state.cart;
-    //     let productID = selectedProducts.id;
-    //     let productQty = selectedProducts.cantidad;
-    //     if(this.checkProduct(productID)){
-    //         console.log('hi');
-    //         let index = cartItem.findIndex((x => x.id == productID));
-    //         cartItem[index].cantidad = Number(cartItem[index].cantidad) + Number(productQty);
-    //         this.setState({
-    //             cart: cartItem
-    //         })
-    //     } else {
-    //         cartItem.push(selectedProducts);
-    //     }
-    //     this.setState({
-    //         cart : cartItem,
-    //         cartBounce: true,
-    //     });
-    //     setTimeout(function(){
-    //         this.setState({
-    //             cartBounce:false,
-    //             cantidad: 1
-    //         });
-    //         console.log(this.state.cantidad);
-    //         console.log(this.state.cart);
-    // }.bind(this),1000);  
-    //     this.sumTotalItems(this.state.cart);
-    // }
-    // handleRemoveProduct(id, e){
-    //     let cart = this.state.cart;
-    //     let index = cart.findIndex((x => x.id == id));
-    //     cart.splice(index, 1);
-    //     this.setState({
-    //         cart: cart
-    //     })
-    //     this.sumTotalItems(this.state.cart);
-    //     e.preventDefault();
-    // }
-    // checkProduct(productID){
-    //     let cart = this.state.cart;
-    //     return cart.some(function(item) {
-    //         return item.id === productID;
-    //     }); 
-    // }
-    // sumTotalItems(){
-    //     let total = 0;
-    //     let cart = this.state.cart;
-    //     total = cart.length;
-    //     this.setState({
-    //         totalItems: total
-    //     })
-    // }
+    // Add to Cart
+    handleAddToCart(selectedProducts){
+        let cartItem = this.state.cart;
+        let productID = selectedProducts.ref;
+        let productQty = selectedProducts.cantidad;
+        if(this.checkProduct(productID)){
+            console.log('hi');
+            let index = cartItem.findIndex((x => x.id == productID));
+            cartItem[index].cantidad = Number(cartItem[index].cantidad) + Number(productQty);
+            this.setState({
+                cart: cartItem
+            })
+        } else {
+            cartItem.push(selectedProducts);
+        }
+        this.setState({
+            cart : cartItem,
+            cartBounce: true,
+        });
+        setTimeout(function(){
+            this.setState({
+                cartBounce:false,
+                quantity: 1
+            });
+            console.log(this.state.quantity);
+            console.log(this.state.cart);
+    }.bind(this),1000);  
+        this.sumTotalItems(this.state.cart);
+    }
+    handleRemoveProduct(id, e){
+        let cart = this.state.cart;
+        let index = cart.findIndex((x => x.id == id));
+        cart.splice(index, 1);
+        this.setState({
+            cart: cart
+        })
+        this.sumTotalItems(this.state.cart);
+        this.sumTotalAmount(this.state.cart);
+        e.preventDefault();
+    }
+    checkProduct(productID){
+        let cart = this.state.cart;
+        return cart.some(function(item) {
+            return item.id === productID;
+        }); 
+    }
+    sumTotalItems(){
+        let total = 0;
+        let cart = this.state.cart;
+        total = cart.length;
+        this.setState({
+            totalItems: total
+        })
+    }
+    
+    //Reset Quantity
+    updateQuantity(qty){
+        console.log("quantity added...")
+        this.setState({
+                quantity: qty
+        })
+    }
 
     render() {
         let
@@ -423,6 +443,11 @@ export default class App extends Component {
 
                                 filtrantColor={this.filtrantColor}
                                 filtreColor={this.state.filtreColor}
+
+                                totalItems={this.state.totalItems}
+                                cartItems={this.state.cart}
+                                removeProduct={this.handleRemoveProduct}
+                                updateQuantity={this.updateQuantity}
                             />
                     )}/>
 
@@ -828,50 +853,13 @@ export default class App extends Component {
                             <MainProducteDETALLS
                                 productId={match.params.productId}
                                 productIdAlState={this.productIdAlState}
+                                productsList={this.state.products}
+                                addToCart={this.handleAddToCart}
+                                productQuantity={this.state.quantity}
+                                updateQuantity={this.updateQuantity}
                             />
                         );
                     }}/>
-
-                    {/*Página de Pedido    */}
-                    {/*<Route exact path="/pedido" render={({ match, history, location }) => {
-                        let
-                            variables = Object.assign({}, this.state.variables, {
-                                subcategoryId: match.params.subcategoryId.match(/\d+$/)[0]
-                            }),
-
-                            MainContentSUBCAT = graphql(Qs.SubCategoriaPRODUCTESQuery, {
-                                ...this.props,
-                                options: {
-                                    variables
-                                }
-                            })(MainContentSubCat)
-                        ;
-
-                        this.variables = variables;
-
-                        return (
-                            <MainContentSUBCAT
-                                marcaIdAVariables={this.marcaIdAVariables}
-                                tallaIdAVariables={this.tallaIdAVariables}
-                                colorIdAVariables={this.colorIdAVariables}
-
-                                filtrantMarca={this.filtrantMarca}
-                                filtreMarca={this.state.filtreMarca}
-
-                                filtrantTalla={this.filtrantTalla}
-                                filtreTalla={this.state.filtreTalla}
-
-                                filtrantColor={this.filtrantColor}
-                                filtreColor={this.state.filtreColor}
-
-                                match={match}
-                                history={history}
-                                location={location}
-
-                                desactivaFiltres={this.desactivaFiltres}
-                            />
-                        );
-                    }}/>*/}
 
 
                     <Route path="/" render={() => (

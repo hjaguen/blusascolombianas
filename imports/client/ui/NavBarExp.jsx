@@ -25,6 +25,7 @@ import EmptyCart from './EmptyCart';
 import {findDOMNode} from 'react-dom';
 import MainContentProducte from './DetallProducte.jsx'
 
+
 export default class NavbarAdaptat extends Component {
     constructor(props) {
         super(props);
@@ -67,15 +68,58 @@ export default class NavbarAdaptat extends Component {
     }
 
     render() {
-        // let cartItems;
-        // cartItems = this.state.cart
-        // console.dir(cartItems);
+       let cartItems;
+        cartItems = this.state.cart.map(product =>{
+            return(
+                <table>
+                    <tbody>
+                        <tr>
+                            <th width="6%"></th>
+                            <th width="46%"></th>
+                            <th width="13%">COLOR</th>
+                            <th width="11%">TALLA</th>
+                            <th width="14%">CANTIDAD</th>
+                            <th width="10%"></th>
+                        </tr>
+                        <tr>
+                            <td>
+                                <Stylo.imagenPedido src={product.imagen}></Stylo.imagenPedido>
+                            </td>
+                            <td>
+                                <span>{product.nombre}</span>
+                                <br></br>
+                                <span>
+                                    <strong>REF:{product.ref} </strong>
+                                    | Marca:{product.marca} 
+                                </span>
+                                <br></br>
+                                <span>
+                                    Código barras: 
+                                </span>
+                            </td>
+                            <td>
+                                <span>{product.color}</span>
+                            </td>
+                            <td>
+                                <span>{product.talla}</span>
+                            </td>
+                            <td>
+                                <span>{product.cantidad > 1 ?"# " : "# 1" }{product.cantidad}</span>
+                            </td>
+                            <td>
+                                <a className="product-remove" href="#" onClick={this.props.removeProduct.bind(this, product.ref)}>Quitar</a>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            )
+        });
         let view;
-        // if(cartItems.length <= 0){
-        //     view = <EmptyCart />
-        // } else{
-        //     view = <div component="ul" className="cart-items">{cartItems}</div>
-        // }
+        if(cartItems.length <= 0){
+            view = <EmptyCart />
+        } else{
+            view = <div component="ul" className="cart-items" style={{listStyle:`none`}}>{cartItems}</div>
+        }
         if (this.props.data.loading) {
             return (<div>Cargando...</div>);
         }
