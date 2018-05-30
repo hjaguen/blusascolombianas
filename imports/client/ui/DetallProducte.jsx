@@ -71,7 +71,7 @@ export default class MainContentProducte extends Component {
 
 
     render() {
-
+        console.dir(this.props.data);
         //console.dir(this.props.cartItems);
 
         let imagen = this.state.imagen;

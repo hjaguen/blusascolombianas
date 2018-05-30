@@ -94,7 +94,7 @@ export default class NavbarAdaptat extends Component {
                                 </span>
                                 <br></br>
                                 <span>
-                                    Código barras: 
+                                    Código barras:{product.barCode}
                                 </span>
                             </td>
                             <td>
@@ -107,7 +107,7 @@ export default class NavbarAdaptat extends Component {
                                 <span>{product.cantidad > 1 ?"# " : "# 1" }{product.cantidad}</span>
                             </td>
                             <td>
-                                <a className="product-remove" href="#" onClick={this.props.removeProduct.bind(this, product.ref)}>Quitar</a>
+                                <a className="product-remove" href="#" onClick={this.props.removeProduct.bind(this, product.barCode)}>Quitar</a>
                             </td>
                         </tr>
                     </tbody>
