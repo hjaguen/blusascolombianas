@@ -14,6 +14,7 @@ export default class MainContentProducte extends Component {
             estado: "ADD TO CART", 
             cart:this.props.cartItems,
             imagen:"",
+            barCode:"",
             cantidad:"",
             cartBounce: false,
             nombre:"",
@@ -43,9 +44,10 @@ export default class MainContentProducte extends Component {
     // }
 
 
-    addToCart(imagen, nombre, ref, marca, color, talla, cantidad){
+    addToCart(barCode, imagen, nombre, ref, marca, color, talla, cantidad){
         this.setState({
             selectedProduct: {
+                barCode:barCode,
                 imagen: imagen,
                 nombre: nombre,   //Descripcion
                 ref: ref,       //Referencia
@@ -71,9 +73,10 @@ export default class MainContentProducte extends Component {
 
 
     render() {
-        console.dir(this.props.data);
+        //console.dir(this.props.data);
         //console.dir(this.props.cartItems);
 
+        let barCode = this.state.barCode;
         let imagen = this.state.imagen;
         let nombre = this.state.nombre; //this.refs.nombre;   //Descripcion
         let ref = this.state.ref;       //Referencia
@@ -255,6 +258,7 @@ export default class MainContentProducte extends Component {
                                                 this.setState({
                                                     color: `${v.labelColor}`,
                                                     talla: `${v.label_talla}`,
+                                                    barCode: `${v.barCode}`,
                                                 });
                                             }}                                            
                                             >{v.label_talla}
@@ -287,7 +291,7 @@ export default class MainContentProducte extends Component {
                       </div>
                       <div className="modal-footer">
                         {/*<button type="button" className="btn btn-success" onClick={this.addToCart.bind(this.state.selectedImgSrc)} data-dismiss="modal">Agregar</button>*/}
-                        <button type="button" className="btn btn-success" onClick={this.addToCart.bind(this, imagen, nombre, ref, marca, color, talla, cantidad)} data-dismiss="modal">Agregar</button>
+                        <button type="button" className="btn btn-success" onClick={this.addToCart.bind(this, barCode, imagen, nombre, ref, marca, color, talla, cantidad)} data-dismiss="modal">Agregar</button>
                       </div>
                     </div>
                   </div>

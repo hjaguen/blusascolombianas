@@ -183,27 +183,28 @@ export default class App extends Component {
         });
     }
 
+     componentWillMount(){
+        this.recoverCart();
+    }
+
     // recover Cart
     recoverCart(){
         let carro = localStorage.getItem('producto')
+        if(carro != null) {
         this.setState({
                 cart: JSON.parse(carro)
             })
-    }
-
-    componentWillMount(){
-        this.recoverCart();
+        }   
     }
 
     // Add to Cart
     handleAddToCart(selectedProducts){
         let cartItem = this.state.cart;
-        let productID = selectedProducts.ref;
+        let productID = selectedProducts.barCode;
         let productQty = selectedProducts.cantidad;
-        let index = cartItem.findIndex((x => x.id == productID));
         if(this.checkProduct(productID)){
             console.log('hi');
-            // let index = cartItem.findIndex((x => x.id == productID));
+            let index = cartItem.findIndex((cartItem => cartItem.barCode == productID));
             cartItem[index].cantidad = Number(cartItem[index].cantidad) + Number(productQty);
             this.setState({
                 cart: cartItem
@@ -222,28 +223,30 @@ export default class App extends Component {
             });
             console.log(this.state.quantity);
             console.log(this.state.cart);
-    }.bind(this),1000);  
-        this.sumTotalItems(this.state.cart);
-        localStorage.setItem("producto", JSON.stringify(cartItem));
-    }
+        }.bind(this),1000);  
+            this.sumTotalItems(this.state.cart);
+            localStorage.setItem("producto", JSON.stringify(cartItem));
+        }
+
     handleRemoveProduct(id, e){
         let cart = this.state.cart;
-        let index = cart.findIndex((x => x.id == ref));
+        let index = cart.findIndex((cart => cart.barCode == id));
         console.log(index);
-        cart.splice(index, 1);
-        localStorage.removeItem("producto");
+        cart.splice(index, 1);  
         this.setState({
             cart: cart
-        })
+        });     
+        localStorage.removeItem("producto");
         localStorage.setItem("producto", JSON.stringify(cart));
+            
         // this.sumTotalItems(this.state.cart);
         // this.sumTotalAmount(this.state.cart);
-        e.preventDefault();
+        // e.preventDefault();
     }
     checkProduct(productID){
         let cart = this.state.cart;
         return cart.some(function(item) {
-            return item.id === productID;
+            return item.barCode === productID;
         }); 
     }
     sumTotalItems(){
