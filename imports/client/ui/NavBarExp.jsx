@@ -20,9 +20,11 @@ import { LinkContainer } from 'react-router-bootstrap';
 import * as conf from './config.jsx';
 import * as Stylo from './StyledComponents.jsx';
 //import './style.css';
-//import CartScrollBar from './CartScrollBar';
+import CartScrollBar from './CartScrollBar';
 import EmptyCart from './EmptyCart';
 import {findDOMNode} from 'react-dom';
+import MainContentProducte from './DetallProducte.jsx'
+
 
 export default class NavbarAdaptat extends Component {
     constructor(props) {
@@ -66,29 +68,58 @@ export default class NavbarAdaptat extends Component {
     }
 
     render() {
-        // let cartItems;
-        //     cartItems = this.state.cart.map(product =>{
-        //         return(
-        //             <li className="cart-item" key={product.name}>
-        //                 <img className="product-image" src={product.image} />
-        //                 <div className="product-info">
-        //                     <p className="product-name">{product.name}</p>
-        //                     <p className="product-price">{product.price}</p>
-        //                 </div>
-        //                 <div className="product-total">
-        //                     <p className="quantity">{product.quantity} {product.quantity > 1 ?"Nos." : "No." } </p>
-        //                     <p className="amount">{product.quantity * product.price}</p>
-        //                 </div>
-        //                 <a className="product-remove" href="#" onClick={this.props.removeProduct.bind(this, product.id)}>×</a>
-        //             </li>
-        //         )
-        //     });
-        //     let view;
-        //     if(cartItems.length <= 0){
-        //         view = <EmptyCart />
-        //     } else{
-        //         view = <CSSTransitionGroup transitionName="fadeIn" transitionEnterTimeout={500} transitionLeaveTimeout={300} component="ul" className="cart-items">{cartItems}</CSSTransitionGroup>
-        //     }
+       let cartItems;
+        cartItems = this.state.cart.map(product =>{
+            return(
+                <table>
+                    <tbody>
+                        <tr>
+                            <th width="6%"></th>
+                            <th width="46%"></th>
+                            <th width="13%">COLOR</th>
+                            <th width="11%">TALLA</th>
+                            <th width="14%">CANTIDAD</th>
+                            <th width="10%"></th>
+                        </tr>
+                        <tr>
+                            <td>
+                                <Stylo.imagenPedido src={product.imagen}></Stylo.imagenPedido>
+                            </td>
+                            <td>
+                                <span>{product.nombre}</span>
+                                <br></br>
+                                <span>
+                                    <strong>REF:{product.ref} </strong>
+                                    | Marca:{product.marca} 
+                                </span>
+                                <br></br>
+                                <span>
+                                    Código barras:{product.barCode}
+                                </span>
+                            </td>
+                            <td>
+                                <span>{product.color}</span>
+                            </td>
+                            <td>
+                                <span>{product.talla}</span>
+                            </td>
+                            <td>
+                                <span>{product.cantidad > 1 ?"# " : "# 1" }{product.cantidad}</span>
+                            </td>
+                            <td>
+                                <a className="product-remove" href="#" onClick={this.props.removeProduct.bind(this, product.barCode)}>Quitar</a>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            )
+        });
+        let view;
+        if(cartItems.length <= 0){
+            view = <EmptyCart />
+        } else{
+            view = <div component="ul" className="cart-items" style={{listStyle:`none`}}>{cartItems}</div>
+        }
         if (this.props.data.loading) {
             return (<div>Cargando...</div>);
         }
@@ -176,24 +207,8 @@ export default class NavbarAdaptat extends Component {
                             <div className="modal-body">
                                 <div className="cart col-sm-8 col-xs-12"> 
                                     <div className="cart-info">
-                                        {/*<table>
-                                            <tbody>
-                                                <tr>
-                                                    <td>No. of items</td>
-                                                    <td>:</td>
-                                                    <td><strong>{this.props.totalItems}</strong></td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Sub Total</td>
-                                                    <td>:</td>
-                                                    <td><strong></strong></td>
-                                                </tr>
-                                            </tbody>
-                                        </table>*/}
                                         <div className={this.state.showCart ? "cart-preview active" : "cart-preview"} ref="cartPreview">
-                                            {/*<CartScrollBar>
-                                                
-                                            </CartScrollBar>*/}
+                                            {view}
                                             <div className="action-block">
                                                 {/*<button type="button" className={this.state.cart.length > 0 ? " " : "disabled"}>PROCEED TO CHECKOUT</button>*/}
                                             </div>

@@ -4,35 +4,35 @@ export let
 
 ////// About - Quienes Somos //////
 
-  titleAbout = `Quiénes Somos`
+  titleAbout = `Qui&eacute;nes Somos`
   ,
 
   contAbout =
   <div>
-    <p><strong>LATINMODA, desde 2003 fortaleciendo las raíces de
-    nuestra cultura latina a través de la moda.</strong></p>
+    <p><strong>LATINMODA, desde 2003 fortaleciendo las ra&iacute;ces de
+    nuestra cultura latina a trav&eacute;s de la moda.</strong></p>
 
 
-    <p>En 2003 surge un sueño, el de acercar nuestra apreciada moda latina
+    <p>En 2003 surge un sue&ntilde;o, el de acercar nuestra apreciada moda latina
     a toda Europa, dando la oportunidad asi a todos los latinos de seguir
     vistiendo con la tan amada moda colombiana, y dando a conocer a el
     mercado europeo todos estos apreciados productos.</p>
 
     <p>Todo este camino, ha servido para llenarnos de conocimiento, amor y
-    dedicación con todo lo que hacemos, cuidando y valorando así desde las
+    dedicaci&oacute;n con todo lo que hacemos, cuidando y valorando as&iacute; desde las
     tantas cabezas de familia que trabajan en nuestros talleres y fabricas
     en Colombia, hasta nuestro cliente final, el cual es el que ha hecho
-    posible todos estos años de historia.</p>
+    posible todos estos a&ntilde;os de historia.</p>
 
     <p>Esta experiencia adquirida, nos avala para poder garantizar unos
-    productos de primera calidad, cuidando cada detalle y a la última moda.
+    productos de primera calidad, cuidando cada detalle y a la &uacute;ltima moda.
     Ofreciendo la posibilidad de trabajar tanto al mercado detal como al
     por mayor, con excelentes precios y contando con asesores previamente
     formados en brindar un apoyo profesional y cercano para cada cliente.</p>
   </div>
   ,
 
-  titleTerms = `Términos y Condiciones de uso`
+  titleTerms = `T&eacute;rminos y Condiciones de uso`
   ,
 
   contTerms =
@@ -263,7 +263,193 @@ En este sentido, si la adquisici&oacute;n entre usted y nosotros se ha celebrado
 </p></div>
 ,
 
-  titleCookies = `Políticas de Cookies`
+titlePrivaci = `Pol&iacute;ticas de Privacidad y Protecci&oacute;n de Datos`
+  ,
+
+  contPrivaci =
+  <div><p>
+    <strong>Aviso Sobre las Pol&iacute;ticas de Privacidad de Nuestro Sitio Web</strong><br />
+      <br />
+    <h3>C&oacute;mo recopilamos, almacenamos y procesamos sus datos personales a trav&eacute;s del uso de nuestro sitio</h3>
+    <br />
+    <strong>INTRODUCCI&Oacute;N</strong>
+    <br />
+    En Latinmoda.net nos comprometemos a asegurar que su informaci&oacute;n personal se encuentre protegida y no se utilice de forma indebida con el cumplimiento de la normativa espa&ntilde;ola de protecci&oacute;n de datos de car&aacute;cter personal, y garantiza el cumplimiento &iacute;ntegro de las obligaciones dispuestas, as&iacute; como la implementaci&oacute;n de las medidas de seguridad dispuestas en el art. 9 de la Ley 15/1999, de Protecci&oacute;n de Datos de Car&aacute;cter Personal (LOPD) y su Reglamento de Desarrollo, as&iacute; como para el cumplimiento del Reglamento General de Protecci&oacute;n de Datos (RGPD) (UE) 2016/679. <br />
+    <br /> 
+    En este documento explicamos qui&eacute;n es el responsable de tratamiento, con qu&eacute; finalidad se va a tratar su informaci&oacute;n personal, la legitimaci&oacute;n para el tratamiento, c&oacute;mo la recabamos, por qu&eacute; la recabamos, c&oacute;mo la utilizamos, los derechos que le asisten y tambi&eacute;n se explican los procesos que hemos dispuesto para proteger su privacidad.
+    <br />
+    <strong>Detalles de Contacto Y Responsabilidad del Tratamiento de Datos</strong><br />
+    <br />
+    La responsabilidad del tratamiento de los datos recae sobre LATINMODA ESTILO Y DISEÑO COLOMBIANO, S.L.U., sociedad española con domicilio en Calle Escribano Maseres N.5 Bajo, 46740 Carcaixent (Valencia), NIF B98047004, teléfono 962441478, e-mail <a href="mailto:ventas@latinmoda.info">ventas@latinmoda.info</a>&nbsp; e inscrita en el registro mercantil de Valencia al tomo 8906, libro 6192, folio 171, hoja V-129701, inscripción 1ª.
+    <br />
+    Si no está satisfecho con algún aspecto de cómo recopilamos y usamos sus datos, tendrá derecho a formular una queja o reclamación ante la Agencia Española de Protección de Datos (<a href="www.agpd.es">www.agpd.es</a>). Le agradeceríamos que se comunique al correo <a href="mailto:gdpr@latinmoda.info">gdpr@latinmoda.info</a>&nbsp; si tiene una queja para que podamos tratar de resolverla por usted.
+    <br />
+    Es muy importante que la información que tenemos sobre usted sea precisa y esté actualizada. Infórmenos si en algún momento cambia su información personal enviándonos un correo electrónico a <a href="mailto:gdpr@latinmoda.info">gdpr@latinmoda.info</a>
+    <br /><br />
+    <strong>¿Qué Datos Recopilamos?</strong><br />
+    <br />
+    Datos personales significa cualquier información capaz de identificar a un individuo. No incluye datos anonimizados.
+    <br />
+    Podemos procesar ciertos tipos de datos personales sobre usted de la siguiente manera:
+    <br />
+    Los datos de identidad pueden incluir su nombre, apellido de soltera, apellido, nombre de usuario, estado civil, título, fecha de nacimiento y sexo.
+    <br />
+    Los datos de contacto pueden incluir su dirección de facturación, dirección de entrega, dirección de correo electrónico y números de teléfono.
+    <br />
+    Los datos financieros pueden incluir los detalles de su cuenta bancaria y tarjeta de pago.
+    <br />
+    Los datos de la transacción pueden incluir detalles sobre los pagos entre nosotros y otros detalles de compras realizadas por usted.
+    <br />
+    Los datos técnicos pueden incluir sus datos de inicio de sesión, direcciones de protocolo de Internet, tipo y versión de navegador, tipos y versiones de complemento de navegador, configuración y ubicación de zona horaria, sistema operativo y plataforma y otra tecnología en los dispositivos que utiliza para acceder a este sitio.
+    <br />
+    Los datos de perfil pueden incluir su nombre de usuario y contraseña, compras u órdenes, sus intereses, preferencias y comentarios.
+    <br />
+    Los Datos de uso pueden incluir información sobre cómo usa nuestro sitio web, productos y servicios.
+    <br />
+    Los datos de marketing y comunicaciones pueden incluir sus preferencias para recibir comunicaciones de marketing de nosotros y de terceros, y sus preferencias de comunicación.
+    <br />
+    También podemos procesar datos agregados a partir de sus datos personales, pero estos datos no revelan su identidad y, como tales, en sí mismos no son datos personales. Un ejemplo de esto es donde revisamos sus Datos de uso para calcular el porcentaje de usuarios de sitios web que utilizan una característica específica de nuestro sitio. Si vinculamos los datos agregados con sus datos personales para que pueda identificarlos, entonces se trata como datos personales.
+    <br />
+    <strong>Información delicada</strong>
+    <br />
+    No recopilamos ningún dato sensible sobre usted. Los datos confidenciales se refieren a datos que incluyen detalles sobre su raza u origen étnico, creencias religiosas o filosóficas, vida sexual, orientación sexual, opiniones políticas, afiliación sindical, información sobre su salud y datos genéticos y biométricos. No recopilamos ninguna información sobre condenas y delitos penales.
+    <br />
+    En caso de que se nos solicite recopilar datos personales por ley, o según los términos del contrato entre nosotros y usted no nos proporcione esos datos cuando se solicite, es posible que no podamos realizar el contrato (por ejemplo, para entregar bienes o servicios para ti). Si no nos proporciona los datos solicitados, es posible que tengamos que cancelar un producto o servicio que ha solicitado, pero si lo hacemos, se lo notificaremos en ese momento.
+    <br /><br />
+    <strong>¿Cómo Recopilamos sus Datos Personales?</strong><br />
+    <br />
+    Recopilamos datos sobre usted a través de una variedad de métodos diferentes, que incluyen:
+    <br /><br />
+  • Interacciones directas: puede proporcionar datos rellenando formularios en nuestro sitio (o de otro modo) o comunicándose con nosotros por correo postal, teléfono, correo electrónico o de otro modo, incluso cuando usted:
+    <br />
+    - Realiza Pedidos.
+    <br />
+    - Crea una cuenta en nuestro sitio;
+    <br />
+    - Suscribirse a nuestras publicaciones;
+  <br /><br />
+  • Tecnologías o interacciones automatizadas: a medida que utiliza nuestro sitio, podemos recopilar automáticamente datos técnicos sobre su equipo, acciones de exploración y patrones de uso. Recopilamos estos datos mediante el uso de cookies, registros de servidor y tecnologías similares. También podemos recibir Datos Técnicos sobre usted si visita otros sitios web que usan nuestras cookies. Consulte nuestra política de cookies para obtener más información.
+
+    <strong>Redes Sociales</strong>
+    <br /><br />
+    Latinmoda.net cuenta con perfil en las principales redes sociales de Internet (Facebook, Instagram, Twitter, LinkedIn, Youtube), reconociéndose en todos los casos Responsable del tratamiento de los datos de sus seguidores, fans, suscriptores, comentaristas y otros perfiles de usuarios. El tratamiento que Latinmoda llevará a cabo con dichos datos dentro de cada una de las referidas redes será el que la red social permita a los perfiles corporativos.
+    <br />
+    Latinmoda podrá informar a sus seguidores, cuando la ley no lo prohíba, por cualquier vía que la red social permita sobre sus actividades y ofertas, así como prestar servicio personalizado de atención al cliente. 
+    <br /><br />
+    <strong>¿Cómo Usamos Sus Datos Personales?</strong>
+    <br />
+    Solo usaremos sus datos personales cuando lo permita la ley. Los usos más comunes de sus datos personales son:
+    <br />
+    1.  Donde tenemos que realizar el contrato entre nosotros.
+    <br />
+    2.  Donde sea necesario para nuestros intereses legítimos (o los de un tercero) y sus intereses y derechos fundamentales no anulan esos intereses.
+    <br />
+    3.  Donde necesitamos cumplir con una obligación legal o regulatoria.
+    <br />
+    En general, no dependemos del consentimiento como base legal para el procesamiento de sus datos personales, salvo en relación con el envío de comunicaciones de marketing a través de correo electrónico o mensaje de texto. Tiene derecho a retirar su consentimiento para la comercialización en cualquier momento enviándonos un correo electrónico a <a href="mailto:gdpr@latinmoda.info">gdpr@latinmoda.info</a> 
+    <br /><br />
+    <strong>Propósitos para procesar sus datos personales</strong>
+    <br /><br />
+    A continuación, se incluye una descripción de las formas en que pretendemos utilizar sus datos personales y los motivos legales sobre los que procesaremos dichos datos. También hemos explicado cuáles son nuestros intereses legítimos cuando es relevante.
+    <br />
+    Podemos procesar sus datos personales para más de un motivo legal, según el propósito específico para el que estamos utilizando sus datos. Envíenos un correo electrónico a <a href="mailto:gdpr@latinmoda.info">gdpr@latinmoda.info</a>&nbsp; si necesita detalles sobre el terreno legal específico en el que confiamos para procesar sus datos personales, en los que se indica más de un motivo en la tabla a continuación.
+    <br /><br />
+    <table>
+      <tr>
+        <td>Propósito / Actividad</td>
+        <td>Tipo de datos</td>
+        <td>Base legal para el procesamiento</td>
+      </tr>
+      <tr>
+        <td>Para registrarlo como un nuevo cliente</td>
+        <td>(a) Identidad
+            (b) Contacto
+        </td>
+        <td>Realización de un contrato con usted</td>
+      </tr>
+      <tr>
+        <td>Para procesar y entregar su pedido, que incluye:
+          (a) Administrar pagos, tarifas y cargos
+          (b) Recoge y recupera el dinero que se nos debe
+        </td>
+        <td>
+          (a) Identidad
+          (b) Contacto
+          (c) Financiero
+          (d) Transacción
+          (e) Marketing y Comunicaciones
+        </td>
+        <td>
+          (a) Ejecución de un contrato con usted
+          (b) Necesario para nuestros intereses legítimos para recuperar deudas con nosotros
+        </td>
+      </tr>
+      <tr>
+        <td>Para administrar nuestra relación con usted que incluirá:
+          (a) Notificarle sobre cambios a nuestros términos o política de privacidad
+          (b) Pedirle que deje una revisión o una encuesta
+        </td>
+        <td>
+          (a) Identidad
+          (b) Contacto
+          (c) Perfil
+          (d) Marketing y Comunicaciones
+        </td>
+        <td>
+          (a) Ejecución de un contrato con usted
+          (b) Necesario para cumplir con una obligación legal
+          (c) Necesario para nuestros intereses legítimos para mantener nuestros registros actualizados y estudiar cómo los clientes utilizan nuestros productos / servicios
+        </td>
+      </tr>
+      <tr>
+        <td>Para administrar y proteger nuestro negocio y nuestro sitio (incluida la solución de problemas, el análisis de datos, las pruebas, el mantenimiento del sistema, el soporte, la creación de informes y el alojamiento de datos)</td>
+        <td>
+          (a) Identidad
+          (b) Contacto
+          (c) Técnico
+        </td>
+        <td>
+          (a) Necesario para nuestros intereses legítimos para dirigir nuestro negocio, la provisión de servicios de administración y TI, la seguridad de la red, para prevenir el fraude y en el contexto de una reorganización empresarial o un ejercicio de reestructuración grupal.
+          (b) Necesario para cumplir con una obligación legal
+        </td>
+      </tr>
+      <tr>
+        <td>Entregarle contenido relevante y anuncios, y medir y comprender la efectividad de nuestra publicidad</td>
+        <td>
+          (a) Identidad
+          (b) Contacto
+          (c) Perfil
+          (d) Uso
+          (e) Marketing y Comunicaciones
+          (f) Técnico
+        </td>
+        <td>Necesario para nuestros intereses legítimos para estudiar cómo los clientes utilizan nuestros productos / servicios, desarrollarlos, hacer crecer nuestro negocio e informar nuestra estrategia de marketing</td>
+      </tr>
+      <tr>
+        <td>Para utilizar el análisis de datos para mejorar nuestro sitio web, productos / servicios, marketing, relaciones con los clientes y experiencias</td>
+        <td>
+          (a) Técnico
+          (b) Uso
+        </td>
+        <td>Necesario para nuestros intereses legítimos para definir tipos de clientes para nuestros productos y servicios, para mantener nuestro sitio actualizado y relevante, para desarrollar nuestro negocio y para informar nuestra estrategia de marketing</td>
+      </tr>
+      <tr>
+        <td>Para hacerle sugerencias y recomendaciones sobre Productos que pueden ser de su interés</td>
+        <td>
+        (a) Identidad
+        (b) Contacto
+        (c) Técnico
+        (d) Uso
+        (e) Perfil
+        </td>
+        <td>Necesario para nuestros intereses legítimos para desarrollar nuestros productos / servicios y hacer crecer nuestro negocio</td>
+      </tr>
+    </table>
+  </p>
+</div>
+
+,
+  titleCookies = `Pol&iacute;ticas de Cookies`
   ,
 
   contCookies =

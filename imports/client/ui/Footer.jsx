@@ -81,6 +81,11 @@ export default class FootrAdaptat extends Component {
                                 </a>
                                 <a href=""
                                   data-toggle="modal"
+                                  data-target="#privaci">
+                                  Políticas de Privacidad y Protección de Datos
+                                </a>
+                                <a href=""
+                                  data-toggle="modal"
                                   data-target="#cookies">
                                   Políticas de Cookies
                                 </a>
@@ -176,6 +181,22 @@ export default class FootrAdaptat extends Component {
                       </div>
                     </div>
 
+                    <div className="modal fade about-modal-lg" id="privaci" tabIndex="-1" role="dialog" aria-labelledby="myModalLabel">
+                      <div className="modal-dialog modal-lg" role="document">
+                        <div className="modal-content">
+                          <div className="modal-header">
+                            <button type="button" className="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                            <h4 className="modal-title" id="myModalLabel">{info.titlePrivaci}</h4>
+                          </div>
+                          <div className="modal-body">
+                            {info.contPrivaci}
+                          </div>
+                          <div className="modal-footer">
+                            <button type="button" className="btn btn-default" data-dismiss="modal">Cerrar</button>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
 
 
                     <div className="modal fade about-modal-lg" id="cookies" tabIndex="-1" role="dialog" aria-labelledby="myModalLabel">

@@ -8,12 +8,20 @@ export default class MainContentProducte extends Component {
         super(props, context);
 
         this.state = {
+            selectedProduct: {},
             selectedImgSrc: "",
             selectedProduct: {},
             estado: "ADD TO CART", 
-            cart: [],
-            cantidad:1,
+            cart:this.props.cartItems,
+            imagen:"",
+            barCode:"",
+            cantidad:"",
             cartBounce: false,
+            nombre:"",
+            marca:"",
+            talla:"",
+            color:"",
+            ref:"",
         };
 
     //    this.canviaImatge = this.canviaImatge.bind(this);
@@ -28,62 +36,18 @@ export default class MainContentProducte extends Component {
     // resetQuantity(){
 
     // }
-    handleAddToCart(selectedProducts){
-        let cartItem = this.state.cart;
-        let productID = selectedProducts.ref;
-        let productQty = selectedProducts.cantidad;
-        if(this.checkProduct(productID)){
-            console.log('hi');
-            let index = cartItem.findIndex((x => x.id == productID));
-            cartItem[index].cantidad = Number(cartItem[index].cantidad) + Number(productQty);
-            this.setState({
-                cart: cartItem
-            })
-        } else {
-            cartItem.push(selectedProducts);
-        }
-        this.setState({
-            cart : cartItem,
-            cartBounce: true,
-        });
-        setTimeout(function(){
-            this.setState({
-                cartBounce:false,
-                cantidad: 1
-            });
-            console.log(this.state.cantidad);
-            console.log(this.state.cart);
-    }.bind(this),1000);  
-        this.sumTotalItems(this.state.cart);
-    }
-    handleRemoveProduct(id, e){
-        let cart = this.state.cart;
-        let index = cart.findIndex((x => x.id == id));
-        cart.splice(index, 1);
-        this.setState({
-            cart: cart
-        })
-        this.sumTotalItems(this.state.cart);
-        e.preventDefault();
-    }
-    checkProduct(productID){
-        let cart = this.state.cart;
-        return cart.some(function(item) {
-            return item.id === productID;
-        }); 
-    }
-    sumTotalItems(){
-        let total = 0;
-        let cart = this.state.cart;
-        total = cart.length;
-        this.setState({
-            totalItems: total
-        })
-    }
 
-    addToCart(imagen, nombre, ref, marca, color, talla, cantidad){
+    // updateInputValue(evt) {
+    //     this.setState({
+    //       cantidad: evt.target.value
+    //     });
+    // }
+
+
+    addToCart(barCode, imagen, nombre, ref, marca, color, talla, cantidad){
         this.setState({
             selectedProduct: {
+                barCode:barCode,
                 imagen: imagen,
                 nombre: nombre,   //Descripcion
                 ref: ref,       //Referencia
@@ -93,7 +57,7 @@ export default class MainContentProducte extends Component {
                 cantidad: cantidad  //quantity
             }
         }, function(){
-            this.handleAddToCart(this.state.selectedProduct);
+            this.props.addToCart(this.state.selectedProduct);
         })
         this.setState({
             estado: "✔ ADDED"
@@ -107,20 +71,20 @@ export default class MainContentProducte extends Component {
         });
     }
 
-    render() {
 
-        console.dir(this.props.data);
-// display: `grid`,
-// gridTemplateColumns: `1fr 1fr`,
-// gridTemplateRows: `auto`,
-// gridAutoFlow: `row dense`,
-        let imagen = this.props.imagen_min;
-        let nombre = this.props.descripcion;   //Descripcion
-        let ref = this.props.referencia;       //Referencia
-        let marca =this.props.nom_marca;    //nom_marca
-        let color = this.props.num_color;   // num_color, label_color
-        let talla = this.props.label_talla;   // label_talla
-        let cantidad = this.props.cantidad;  //quantity
+    render() {
+        //console.dir(this.props.data);
+        //console.dir(this.props.cartItems);
+
+        let barCode = this.state.barCode;
+        let imagen = this.state.imagen;
+        let nombre = this.state.nombre; //this.refs.nombre;   //Descripcion
+        let ref = this.state.ref;       //Referencia
+        let marca = this.state.marca;    //nom_marca
+        let color = this.state.color;   // num_color, label_color
+        let talla = this.state.talla;   // label_talla
+        let cantidad = this.state.cantidad;  //quantity
+        
         return (
             [
                 <div
@@ -156,7 +120,7 @@ export default class MainContentProducte extends Component {
                                                         borderRadius: `3px`
                                                     }}
                                                     onMouseOver={() => {
-                                                        console.dir(v);
+                                                        //console.dir(v);
                                                         this.setState({
                                                             selectedImgSrc: `http://images.colombiaespassion.net/${v.imagen_min}`
                                                         });
@@ -183,6 +147,14 @@ export default class MainContentProducte extends Component {
                                 width: `100%`,
                                 borderRadius: `1.5vw`,
                                 marginBottom: `20px`
+                            }}
+                            onLoad={() => {
+                                this.setState({
+                                    imagen: `http://images.colombiaespassion.net/${this.props.data.producteDETALLS[0].imagen_principal}`,
+                                    nombre: `${this.props.data.producteDETALLS[0].descripcion}`,
+                                    marca: `${this.props.data.producteDETALLS[0].nom_marca}`,
+                                    ref: `${this.props.data.producteDETALLS[0].referencia}`,
+                                });
                             }}
                           />
                         : "Cargando..."
@@ -282,7 +254,13 @@ export default class MainContentProducte extends Component {
                                                title="Agregar a Pedido" //{v.labelColor}
                                                data-toggle="modal"
                                                data-target="#count"
-                                               //onClick={this.addToCart.bind(this, imagen, nombre, ref, marca, color, talla, cantidad)}
+                                               onClick={() => {
+                                                this.setState({
+                                                    color: `${v.labelColor}`,
+                                                    talla: `${v.label_talla}`,
+                                                    barCode: `${v.barCode}`,
+                                                });
+                                            }}                                            
                                             >{v.label_talla}
                                             </button>
                                        );
@@ -304,11 +282,16 @@ export default class MainContentProducte extends Component {
                       </div>
                       <div className="modal-body">
                         {/*<Counter cantidad={cantidad} updateQuantity={this.updateQuantity} resetQuantity={this.resetQuantity}/>*/}
-                        <div><input defaultValue="1" id="cantidad" /></div>
+                        <div><input defaultValue="1" id="cantidad" ref="cant"  
+                        onChange={() => {
+                            this.setState({
+                                cantidad: this.refs.cant.value,
+                            });
+                        }}       /></div>
                       </div>
                       <div className="modal-footer">
-                        <button type="button" className="btn btn-success" onClick={this.addToCart.bind(this, imagen, nombre, ref, marca, color, talla, cantidad)} data-dismiss="modal">Agregar</button>
-                        {/*<button type="button" className="btn btn-default" data-dismiss="modal">Cerrar</button>*/}
+                        {/*<button type="button" className="btn btn-success" onClick={this.addToCart.bind(this.state.selectedImgSrc)} data-dismiss="modal">Agregar</button>*/}
+                        <button type="button" className="btn btn-success" onClick={this.addToCart.bind(this, barCode, imagen, nombre, ref, marca, color, talla, cantidad)} data-dismiss="modal">Agregar</button>
                       </div>
                     </div>
                   </div>
