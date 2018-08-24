@@ -27,23 +27,6 @@ export default class MainContentProducte extends Component {
     //    this.canviaImatge = this.canviaImatge.bind(this);
     }
 
-    // canviaImatge({props}) {
-    //     this.setState({
-    //         selectedImgSrc: `http://images.colombiaespassion.net/${props.v.imagen_min}`
-    //     })
-    // }
-
-    // resetQuantity(){
-
-    // }
-
-    // updateInputValue(evt) {
-    //     this.setState({
-    //       cantidad: evt.target.value
-    //     });
-    // }
-
-
     addToCart(barCode, imagen, nombre, ref, marca, color, talla, cantidad){
         this.setState({
             selectedProduct: {
@@ -300,8 +283,3 @@ export default class MainContentProducte extends Component {
         );
     }
 }
-
-// gridColumnStart: `2`,
-// gridColumnEnd: `span 2`,
-// gridRowStart: `2`,
-// gridRowEnd: `span 1`
